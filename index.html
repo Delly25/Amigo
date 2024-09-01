@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>uma brincadeira pra vc lembrar de me vida - Página Inicial</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #fce4ec;
+            color: #c2185b;
+            margin: 0;
+            padding: 0;
+        }
+        #moving-button {
+            background-color: #f06292;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            cursor: pointer;
+            border-radius: 50%;
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <h1>Bem-vindo a nossa brincadeira amo ❤️  aqui vc vai poder lembrar o quanto eu te amo sempre que entrar </h1>
+    <p>Clique no botão para continuar.</p>
+    <button id="moving-button">Clique em mim!</button>
+
+    <script>
+        let clickCount = 0;
+        const button = document.getElementById('moving-button');
+
+        button.addEventListener('click', () => {
+            clickCount++;
+            if (clickCount >= 5) {
+                window.location.href = 'cadastro.html';
+            } else {
+                // Move o botão aleatoriamente
+                button.style.top = Math.random() * (window.innerHeight - button.offsetHeight) + 'px';
+                button.style.left = Math.random() * (window.innerWidth - button.offsetWidth) + 'px';
+            }
+        });
+    </script>
+</body>
+</html>

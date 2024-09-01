@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #fce4ec; /* Rosa bem clarinho */
+        }
+        .container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 100%;
+            max-width: 500px;
+            display: none;
+        }
+        .active {
+            display: block;
+        }
+        .input-group {
+            margin-bottom: 15px;
+        }
+        .input-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        .input-group input, .input-group textarea {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+        }
+        .input-group textarea {
+            height: 100px;
+            resize: vertical;
+        }
+        .button {
+            padding: 10px 20px;
+            background-color: #d81b60; /* Cor de rosa escuro */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <!-- Seção de Confirmação -->
+    <div id="confirmacao" class="container active">
+        <p>Obrigado, <span id="nome-confirmacao"></span>!</p>
+        <p>Sua confirmação foi recebida.</p>
+        <button class="button" onclick="showSection('cadastro')">OK</button>
+    </div>
+
+    <!-- Seção de Cadastro -->
+    <div id="cadastro" class="container">
+        <h2>Cadastro</h2>
+        <div class="input-group">
+            <label for="nome">Nome:</label>
+            <input type="text" id="nome">
+        </div>
+        <div class="input-group">
+            <label for="idade">Idade:</label>
+            <input type="number" id="idade">
+        </div>
+        <div class="input-group">
+            <label for="comer">Comida Favorita:</label>
+            <input type="text" id="comer">
+        </div>
+        <button class="button" onclick="goToGame()">OK</button>
+    </div>
+
+    <div id="detalhes" class="container">
+        <h2>Detalhes Adicionais</h2>
+        <div class="input-group">
+            <label for="namorada">Nome da Namorada:</label>
+            <input type="text" id="namorada">
+        </div>
+        <div class="input-group">
+            <label for="idade-namorada">Idade:</label>
+            <input type="number" id="idade-namorada">
+        </div>
+        <div class="input-group">
+            <label for="salvo">Como Está Salvo:</label>
+            <input type="text" id="salvo">
+        </div>
+        <div class="input-group">
+            <label for="melhores-momentos">Melhores Momentos:</label>
+            <textarea id="melhores-momentos"></textarea>
+        </div>
+        <button class="button">Enviar</button>
+    </div>
+
+    <script>
+        // Função para exibir a seção desejada
+        function showSection(sectionId) {
+            document.querySelectorAll('.container').forEach(section => {
+                section.classList.remove('active');
+            });
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        // Função para navegar para o jogo
+        function goToGame() {
+            // Aqui você pode armazenar dados em localStorage se precisar
+            window.location.href = 'game.html'; // Certifique-se de que o nome do arquivo do jogo está correto
+        }
+
+        // Preenche o nome na seção de confirmação
+        function setName(name) {
+            document.getElementById('nome-confirmacao').textContent = name;
+            showSection('confirmacao');
+        }
+
+        // Exemplo de como preencher o nome na seção de confirmação
+        setName('amor'); // Substitua '' pelo nome desejado
+    </script>
+</body>
+</html>
